@@ -13,15 +13,16 @@ const guestbook = {
   },
   // add a single guestbood entry
   add(roomNumber, people, injured) {
-    console.log('Sending', roomNumber, people, injured)
+    console.log('Sending', roomNumber, people, injured);
     return $.ajax({
       type: 'PUT',
       url: `${apiUrl}/entries`,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
-        roomNumber,
-        people,
-        injured,
+        roomNumber: {
+          people: people,
+          injured: injured
+        }
       }),
       dataType: 'json',
     });
