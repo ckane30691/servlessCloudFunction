@@ -13,16 +13,15 @@ const guestbook = {
   },
   // add a single guestbood entry
   add(roomNumber, people, injured) {
-    console.log('Sending', roomNumber, people, injured);
+    console.log('Sending', roomNumber, people, injured)
     return $.ajax({
       type: 'PUT',
       url: `${apiUrl}/entries`,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
-        roomNumber: {
-          people: people,
-          injured: injured
-        }
+        roomNumber,
+        people,
+        injured,
       }),
       dataType: 'json',
     });
@@ -42,12 +41,12 @@ const guestbook = {
     console.log('Loading entries...');
     $('#entries').html('Loading entries...');
     guestbook.get().done(function(result) {
-      if (!result) {
+      if (!result.entries) {
         return;
       }
 
       const context = {
-        entries: result
+        entries: result.entries
       };
       $('#entries').html(entriesTemplate(context));
     }).error(function(error) {
