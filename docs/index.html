@@ -41,6 +41,15 @@
               </div>
             </div>
             <div class="field">
+              <label class="label">phoneNumber</label>
+              <div class="control">
+                <input class="input" type="text"
+                placeholder="the room you're in"
+                id="phoneNumber">
+
+              </div>
+            </div>
+            <div class="field">
               <label class="label">people</label>
               <div class="control">
                 <input class="input" type="text" placeholder="your email" id="people">
@@ -63,7 +72,7 @@
 
   <script id="entries-template" type="text/x-handlebars-template">
     {{#each entries}}
-    
+
     <div class="box">
       <article class="media">
         <div class="media-left">
@@ -74,6 +83,7 @@
             <p>
               <strong>{{roomNumber}}</strong> <small>{{people}}</small>
               <br> {{injured}}
+              <br> {{phoneNumber}}
             </p>
           </div>
         </div>

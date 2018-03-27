@@ -12,13 +12,14 @@ const guestbook = {
     });
   },
   // add a single guestbood entry
-  add(roomNumber, people, injured) {
-    console.log('Sending', roomNumber, people, injured)
+  add(phoneNumber, roomNumber, people, injured) {
+    console.log('Sending', phoneNumber, roomNumber, people, injured)
     return $.ajax({
-      type: 'PUT',
+      type: 'POST',
       url: `${apiUrl}/entries`,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
+        phoneNumber,
         roomNumber,
         people,
         injured,
@@ -63,7 +64,8 @@ const guestbook = {
     guestbook.add(
       $('#roomNumber').val().trim(),
       $('#people').val().trim(),
-      $('#injured').val().trim()
+      $('#injured').val().trim(),
+      $('#phoneNumber').val().trim()
     ).done(function(result) {
       // reload entries
       loadEntries();
